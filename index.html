@@ -1,24 +1,29 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="database.js" defer></script>
+  <title>Automodell Datenbank</title>
 </head>
 <body>
-<header>
-  <nav>
-  </nav>
-</header>
+<h1>Automodell Datenbank</h1>
 
-<main>
-  <article>
-    <section>
-    </section>
-  </article>
-</main>
+<form id="modellAuswahlForm">
+  <label for="modellAuswahl">Wähle ein Automodell:</label>
+  <select id="modellAuswahl" name="modellAuswahl">
+  </select>
+  <label for="baujahrAuswahl">Wähle ein Baujahr:</label>
+  <select id="baujahrAuswahl" name="baujahrAuswahl">
+  </select>
+  <button type="button" onclick="anzeigenDaten()">Daten anzeigen</button>
+</form>
 
-<footer>
-</footer>
 
+<div id="ergebnisse"></div>
+
+<script src="app.js" defer></script>
 </body>
 </html>
