@@ -10,14 +10,22 @@
 </head>
 <body>
 <h1>Automodell Datenbank</h1>
+<form id="filterForm">
+  <label for="markeAuswahl">Wähle eine Marke:</label>
+  <select id="markeAuswahl" name="markeAuswahl">
+    <!-- Hier fügen wir die Marken dynamisch ein -->
+  </select>
 
-<form id="modellAuswahlForm">
   <label for="modellAuswahl">Wähle ein Automodell:</label>
   <select id="modellAuswahl" name="modellAuswahl">
+    <!-- Hier fügen wir die Automodelle dynamisch ein -->
   </select>
+
   <label for="baujahrAuswahl">Wähle ein Baujahr:</label>
   <select id="baujahrAuswahl" name="baujahrAuswahl">
+    <!-- Hier fügen wir die Baujahre dynamisch ein -->
   </select>
+
   <button type="button" onclick="anzeigenDaten()">Daten anzeigen</button>
 </form>
 

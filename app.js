@@ -1,5 +1,11 @@
 
+
 function anzeigenDaten() {
+    aktualisiereModellDropdown(); // Aktualisiere das Modell-Dropdown basierend auf der ausgewählten Marke
+
+    var markenAuswahlElement = document.getElementById('markeAuswahl');
+    var ausgewaehlteMarke = markenAuswahlElement.value;
+
     var modellAuswahlElement = document.getElementById('modellAuswahl');
     var ausgewaehltesModell = modellAuswahlElement.value;
 
@@ -11,22 +17,25 @@ function anzeigenDaten() {
 
     var gefunden;
 
-    if (ausgewaehltesModell === '' && ausgewaehltesBaujahr !== '') {
-        // Wenn kein Modell ausgewählt wurde, filtere nach Baujahr
+    // Füge die Marke als Filterkriterium hinzu
+    if (ausgewaehlteMarke !== '' && ausgewaehltesModell !== '' && ausgewaehltesBaujahr !== '') {
         gefunden = automodelle.filter(function (auto) {
-            return auto.baujahr.toString() === ausgewaehltesBaujahr;
+            return auto.marke === ausgewaehlteMarke && auto.modell === ausgewaehltesModell && auto.baujahr.toString() === ausgewaehltesBaujahr;
         });
-    } else if (ausgewaehltesModell !== '' && ausgewaehltesBaujahr !== '') {
-        // Wenn Modell und Baujahr ausgewählt wurden, filtere nach Modell und Baujahr
+    } else if (ausgewaehlteMarke !== '' && ausgewaehltesModell !== '') {
         gefunden = automodelle.filter(function (auto) {
-            return auto.modell === ausgewaehltesModell && auto.baujahr.toString() === ausgewaehltesBaujahr;
+            return auto.marke === ausgewaehlteMarke && auto.modell === ausgewaehltesModell;
         });
-    } else {
-        // Wenn ein Modell ausgewählt wurde, filtere nach Modell
+    } else if (ausgewaehlteMarke !== '' && ausgewaehltesBaujahr !== '') {
         gefunden = automodelle.filter(function (auto) {
-            return auto.modell === ausgewaehltesModell;
+            return auto.marke === ausgewaehlteMarke && auto.baujahr.toString() === ausgewaehltesBaujahr;
+        });
+    } else if (ausgewaehlteMarke !== '') {
+        gefunden = automodelle.filter(function (auto) {
+            return auto.marke === ausgewaehlteMarke;
         });
     }
+
 
     if (gefunden.length > 0) {
         gefunden.forEach(function (auto) {
